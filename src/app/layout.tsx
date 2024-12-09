@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {Poppins,Montserrat} from 'next/font/google'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+});
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ["100", "200", "500", "700", "900"],
+});
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ["100", "200", "500", "700", "900"],
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -26,9 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${poppins} ${montserrat} ${geistMono.variable} ${geistSans.variable} antialiased`}
+>
+      
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
